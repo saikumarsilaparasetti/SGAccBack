@@ -93,7 +93,7 @@ router.post('/login',async (req,res)=>{
         else{
             //res.redirect('http://localhost4200/index');
             console.log(false)
-            //res.send(0)    
+            res.send([])    
         }
     });
 })
