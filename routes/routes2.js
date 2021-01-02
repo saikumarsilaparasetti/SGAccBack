@@ -11,11 +11,13 @@ router.get('/login/:name/:password',(req,res,next)=>{
     Regi.find({'name':req.params.name},(error,regis)=>{
         if(pwd==regis[0].password){
 
-            res.redirect('http://localhost4200/home');
+            //res.redirect('http://localhost4200/home');
+            res.redirect('/home');
             console.log('valid');
             }
         else{
-            res.redirect('http://localhost4200/index');
+            //res.redirect('http://localhost4200/index');
+            res.redirect('/index');
             }
     });
 });
@@ -28,11 +30,13 @@ router.get('/register/:name/:password',(req,res,next)=>{
     newRegi.save((error,contact)=>{
         if(error){
             //res.json({msg:'Failed to connect'});
-            res.writeHead(301,{"Location":"http://localhost:4200/login"});
+            //res.writeHead(301,{"Location":"http://localhost:4200/login"});
+            res.writeHead(301,{"Location":"/login"});
             console.log(error);
         }else{
             //res.json({msg:'Connected'});
-            res.writeHead(301,{"Location":"http://localhost:4200/login"});
+            //res.writeHead(301,{"Location":"http://localhost:4200/login"});
+            res.writeHead(301,{"Location":"/login"});
         }
     })
 });

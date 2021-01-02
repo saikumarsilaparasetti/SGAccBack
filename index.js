@@ -5,7 +5,8 @@ var bodyparser=require('body-parser');
 var cors=require('cors');
 
 var app=express();
- const port=3000;
+//const port=3000;
+const port=peocess.env.PORT || 8080;
  const route=require('./routes/route');
 mongoose.connect('mongodb://localhost:27017/SGAcc',{ useNewUrlParser: true ,useUnifiedTopology: true});
 mongoose.connection.on('connected',()=>{
@@ -20,6 +21,7 @@ mongoose.connection.on('error',(error)=>{
  app.use(bodyparser.json());
  app.use(express.static(path.join(__dirname,'public')));
 app.use(route)
+
 app.listen(port,(result,error)=>{
     if(error)
         console.log(error);

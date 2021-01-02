@@ -42,7 +42,7 @@ router.post('/issue',async (req,res)=>{
     
     try{
         //Customer.update({name:req.body._id},{balance:req.body.amount});
-        fin_bal=0;
+        let fin_bal=0;
         await Customer.find({'_id':req.body.cust_id},function(err,doc){
             console.log(typeof req.body.amount)
             doc[0].balance=doc[0].balance+req.body.amount;
