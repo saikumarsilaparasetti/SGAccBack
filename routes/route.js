@@ -7,6 +7,10 @@ const Transection=require('../models/transection')
 const { Mongoose } = require('mongoose')
 //const admin = require('../models/admin')
 
+router.post('/',(req,res)=>{
+    res.status(200).send('<html><h1>Hello world!!</h1></html>')
+})
+
 router.post('/registerAdmin',(req,res)=>{
     console.log(req.body.name)
     const admin=new Admin(req.body)
