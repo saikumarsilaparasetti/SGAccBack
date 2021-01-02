@@ -6,7 +6,7 @@ var cors=require('cors');
 
 var app=express();
 //const port=3000;
-const port=peocess.env.PORT || 8080;
+const port=process.env.PORT || 8080;
  const route=require('./routes/route');
 mongoose.connect('mongodb://localhost:27017/SGAcc',{ useNewUrlParser: true ,useUnifiedTopology: true});
 mongoose.connection.on('connected',()=>{
