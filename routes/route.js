@@ -31,15 +31,29 @@ router.post('/registerAdmin',(req,res)=>{
 
 router.post('/registerCustomer',(req,res)=>{
     console.log(req.body.name)
-    const customer=new Customer(req.body)
-    try{
+    Customer.find({'contact':req.body.contact},(err,result)=>{
+//        console.log(result);
+        try{
+            if(result[0].contact==req.body.contact){
+                res.send([{'added':false}])
+                //process.exit()
+                //console.log('Okay');
+            }else{
+                const customer=new Customer(req.body)
+                try{
+            
+                    customer.save()
+                    res.status(200).send([{'added':true}])
+                
+                }catch(e){
+                    res.status(400).send(e)
+                }
+            }
+        }catch(e){
+            res.status(400).send(e)
+        }
+    })
 
-        customer.save()
-        res.status(200).send()
-    
-    }catch(e){
-        res.status(400).send(e)
-    }
     //res.end('validate called')
 })
 
@@ -93,7 +107,7 @@ router.post('/login',async (req,res)=>{
         else{
             //res.redirect('http://localhost4200/index');
             console.log(false)
-            res.send([])    
+            //res.send([0])    
         }
     });
 })
