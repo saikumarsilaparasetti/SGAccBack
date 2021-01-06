@@ -8,8 +8,8 @@ var app=express();
 //const port=3000;
 const port=process.env.PORT || 3000;
  const route=require('./routes/route');
-mongoose.connect('mongodb://localhost:27017/SGAcc',{ useNewUrlParser: true ,useUnifiedTopology: true});
-//mongoose.connect('mongodb+srv://saikumar:saikumar21@cluster0.kxdfx.mongodb.net/SGAcc_db?retryWrites=true&w=majority',{ useNewUrlParser: true ,useUnifiedTopology: true});
+//mongoose.connect('mongodb://localhost:27017/SGAcc',{ useNewUrlParser: true ,useUnifiedTopology: true});
+mongoose.connect('mongodb+srv://saikumar:saikumar21@cluster0.kxdfx.mongodb.net/SGAcc_db?retryWrites=true&w=majority',{ useNewUrlParser: true ,useUnifiedTopology: true});
 mongoose.connection.on('connected',()=>{
     console.log('Connected to data base');
 
